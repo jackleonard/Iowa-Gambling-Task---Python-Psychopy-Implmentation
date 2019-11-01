@@ -1,4 +1,17 @@
 
+'''
+
+################## FILEMANAGER.PY ########################
+      © Jack Leonard 2019
+      117372043 - Iowa Gambling Task Project
+
+    Two classes: FileManager & DeckFileManager
+    A fork of submitted assignment 2 older/filemanager_old_submitted_assignment2.py
+
+##########################################################
+'''
+
+
 import csv
 
 class FileManager:
