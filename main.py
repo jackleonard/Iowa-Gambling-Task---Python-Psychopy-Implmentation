@@ -27,7 +27,8 @@ deckB = DeckFileManager()
 deckC = DeckFileManager()
 deckD = DeckFileManager()
 
-# Psychopy GUI
+# ✎ Psychopy GUI
+#todo: figure out why text isn't rendering and or centred
 
 display = Window(
     size=(600,400),
@@ -48,6 +49,42 @@ t1.draw() #draw the text
 display.flip() #clear the canvas and place new 'drawable' elements on the canvas
 core.wait(25) #wait 7 seconds
 display.close() #close the display
+
+# ♔ Main Code
+
+#todo: sends in a list representing the initial key pressed by the user
+def runningTrial(key_pressed):
+    pass
+
+#A - while loop
+
+char_pressed = None
+
+while char_pressed != 'q' or not deckA.rowNumber > deckA.getTotalRows() or not deckB.rowNumber > deckB.getTotalRows() or not deckC.rowNumber > deckC.getTotalRows() or not deckD.rowNumber > deckD.getTotalRows():
+    #todo: not sure if not notation here works - check this
+
+  # this will continue to loop until the participant clicks 'q' key
+    char_pressed = input("Please enter a character: 'a', 'b', 'c' or 'd' to reveal your winnings. Type 'q' to quit: ")
+    if char_pressed == 'a': # character 'a' refers to Deck A
+
+
+
+    elif char_pressed == 'b': # character 'b' refers to Deck B
+
+
+
+    elif char_pressed == 'c': # character 'c' refers to Deck C
+
+
+
+    elif char_pressed == 'd': # character 'd' refers to Deck UnicodeDecodeError
+
+
+
+
+
+
+
 
 
 
