@@ -47,6 +47,18 @@ class Participant:
         return "Object Info - Participants Full Name: %s, Participant Number:  %d" % (self.fullName, self.participantsNumber)
 
 
+class trialParticipant(Participant):
+
+    #Initializer for trialParticipant Class
+    def __init__(self):
+
+        self.charsPressed = {"a": 0, "b": 0, "c": 0, "d": 0, }
+
+        #Dragging in initializer from Participant Class
+        super(Participant).__init__()
+
+    pass
+
 
 
 
