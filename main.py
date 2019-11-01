@@ -21,7 +21,7 @@ from psychopy import core
 
 # -> Instantiating Classes
 
-participantA = trialParticipant()
+participantA = trialParticipant
 deckA = DeckFileManager()
 deckB = DeckFileManager()
 deckC = DeckFileManager()
@@ -66,6 +66,14 @@ while char_pressed != 'q' or not deckA.rowNumber > deckA.getTotalRows() or not d
   # this will continue to loop until the participant clicks 'q' key
     char_pressed = input("Please enter a character: 'a', 'b', 'c' or 'd' to reveal your winnings. Type 'q' to quit: ")
     if char_pressed == 'a': # character 'a' refers to Deck A
+        print(deckA.getWinsLoses())
+        print(deckA.getWins())
+        print(deckA.getLosses())
+        participantA.setwinnings()
+
+        #todo: figure  out why participantA doesnt have access to subclass init
+
+
 
 
 

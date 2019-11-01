@@ -53,13 +53,12 @@ class trialParticipant(Participant):
     #Initializer for trialParticipant Class
     def __init__(self):
 
+        # Dragging in initializer from Participant Class
+        super(Participant).__init__
+
         self.charsPressed = {"a": 0, "b": 0, "c": 0, "d": 0,}
 
-        #Dragging in initializer from Participant Class
-        super(Participant).__init__()
-
-        ########## Class Methods ported over from older/117372043_Week4Lab1Assignment.py ########
-
+        #todo: none of these are working outside this file for some reason
         def getWinnings(self):
             return self.__winnings
 
@@ -138,8 +137,7 @@ class trialParticipant(Participant):
 
             return minvalueList
 
-    pass
 
 
-
-
+participantB = trialParticipant
+print(participantB)
