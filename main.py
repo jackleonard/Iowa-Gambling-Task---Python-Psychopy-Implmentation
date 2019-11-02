@@ -28,6 +28,7 @@ deckC = DeckFileManager()
 deckD = DeckFileManager()
 
 #       ✎ Psychopy GUI
+'''
 #todo: figure out why text isn't rendering and or centred
 
 display = Window(
@@ -50,6 +51,8 @@ display.flip() #clear the canvas and place new 'drawable' elements on the canvas
 core.wait(25) #wait 7 seconds
 display.close() #close the display
 
+'''
+
 #       ♔ Main Code
 
 #todo: sends in a list representing the initial key pressed by the user
@@ -60,7 +63,8 @@ def runningTrial(key_pressed):
 
 char_pressed = None
 
-while char_pressed != 'q' or  deckA.rowNumber not > deckA.getTotalRows() or  deckB.rowNumber not > deckB.getTotalRows() or  deckC.rowNumber not > deckC.getTotalRows() or  deckD.rowNumber not > deckD.getTotalRows():
+#todo: Fix this code figure out how to make sure less than rows 
+while char_pressed != 'q': #or  deckA.rowNumber <= deckA.getTotalRows() or  deckB.rowNumber <= deckB.getTotalRows() or  deckC.rowNumber <= deckC.getTotalRows() or  deckD.rowNumber <= deckD.getTotalRows():
     #todo: not sure if not notation here works - check this
 
   # this will continue to loop until the participant clicks 'q' key
