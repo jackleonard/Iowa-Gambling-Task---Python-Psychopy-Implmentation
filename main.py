@@ -80,7 +80,6 @@ while char_pressed != 'q' and deckOverflow != True:
     if char_pressed == 'a': # character 'a' refers to Deck A
 
         #obtaining winning & losing amount from Deck
-        print(deckA.getWinsLoses())
         winningsLoses = deckA.getWinsLoses()
         print(f"This is winnings Loses {winningsLoses} of type: {type(winningsLoses)}")
         print(f"This is winnings  {int(winningsLoses[0])} of type: {type(int(winningsLoses[0]))}")
