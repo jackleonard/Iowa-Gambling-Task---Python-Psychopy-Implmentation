@@ -20,9 +20,11 @@ class Participant:
     def __init__(self, firstName, lastName):
         # Participants First Name
         self.firstName = firstName
+        firstName = "Jack" #todo: review this - hardcoding because of property instructions, seems to remove error but not sure if correct
 
         # Participants Last Name
         self.lastName = lastName
+        lastName = "Leonard" #todo: review this - hardcoding because of property instructions, seems to remove error but not sure if correct
 
         #Participants Full Name
         self.fullName = self.firstName + " " + self.lastName
@@ -54,9 +56,9 @@ class trialParticipant(Participant):
     def __init__(self):
 
         # Dragging in initializer from Participant Class
-        super(trialParticipant, self).__init__()
+        super(trialParticipant, self).__init__("Jack", "Leonard") #todo: hardcoded some values into this to test bug, remove them
 
-        self.charsPressed = {"a": 0, "b": 0, "c": 0, "d": 0,}
+        self.__charsPressed = {"a": 0, "b": 0, "c": 0, "d": 0,}
         self.__winnings = 0 #todo: I added this in, because it was in old file. Not set in this.
 
 
@@ -72,7 +74,7 @@ class trialParticipant(Participant):
          # Takes a tutle as input (amount_won,amount_lost)
         # From this the function should calculate how much money the participant has left over once the winning amount and losing amount has been applied to the participant’s overall winnings.
         winnings = self.__winnings
-        newWinnings = (winnings - winnings_loses[1]) + winnings_loses[0]
+        newWinnings = (winnings - int(winnings_loses[1])) + int(winnings_loses[0])
         self.__winnings = newWinnings
 
         # H - This function returns the character presses made by the participant as a list of tuples (i.e. not a dictionary).

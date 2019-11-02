@@ -21,7 +21,7 @@ from psychopy import core
 
 #       -> Instantiating Classes
 
-participantA = trialParticipant
+participantA = trialParticipant()
 deckA = DeckFileManager()
 deckB = DeckFileManager()
 deckC = DeckFileManager()
@@ -82,12 +82,14 @@ while char_pressed != 'q' and deckOverflow != True:
         #obtaining winning & losing amount from Deck
         print(deckA.getWinsLoses())
         winningsLoses = deckA.getWinsLoses()
+        print(f"This is winnings Loses {winningsLoses} of type: {type(winningsLoses)}")
+        print(f"This is winnings  {int(winningsLoses[0])} of type: {type(int(winningsLoses[0]))}")
         #Obtaining the amount won as display text
         print(deckA.getWins())
         #Obtaining the amount lost as display text
         print(deckA.getLosses())
         #Recalculating the participants winnings
-        participantA.setWinnings(participantA, winningsLoses) #todo: requires two actions? positional argument 'winnings_loses')
+        participantA.setWinnings(winningsLoses) #todo: requires two actions? positional argument 'winnings_loses')
         participantA.recordKeysPressed('a')
 
 
