@@ -88,9 +88,7 @@ class trialParticipant(Participant):
         if char_pressed == "a" or char_pressed == "b" or char_pressed == "c" or char_pressed == "d":
             charDict[char_pressed] += 1
 
-        # print(charDict)
-    else:  # this is actually superflous, I could just use the first statement but I'm leaving it here in case I need a special operation for disalowed keys
-        print("Invalid Character")
+
 
         # This function is intended to count how many times a participant has clicked the characters a, b, c or d.
 
