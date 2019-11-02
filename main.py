@@ -55,24 +55,15 @@ display.close() #close the display
 
 #       ♔ Main Code
 
-#todo: sends in a list representing the initial key pressed by the user
+
 def runningTrial(key_pressed):
     pass
 
-#A - while loop
-
+# Sentinel While Loop with two flags q for user quit and check if rows left  overflow)
+deckOverflow = False
 char_pressed = None
 
-#todo: Fix this code figure out how to make sure less than rows
-# Sentinel Loop ??
-deckOverflow = False
-
-
-
-
-
-while char_pressed != 'q' and deckOverflow != True: #or  deckA.rowNumber <= deckA.getTotalRows() or  deckB.rowNumber <= deckB.getTotalRows() or  deckC.rowNumber <= deckC.getTotalRows() or  deckD.rowNumber <= deckD.getTotalRows():
-    #todo: not sure if not notation here works - check this
+while char_pressed != 'q' and deckOverflow != True:
 
     if deckA.rowNumber > deckA.getTotalRows():
         deckOverflow = True
@@ -96,7 +87,7 @@ while char_pressed != 'q' and deckOverflow != True: #or  deckA.rowNumber <= deck
         #Obtaining the amount lost as display text
         print(deckA.getLosses())
         #Recalculating the participants winnings
-        participantA.setWinnings(winningsLoses)
+        participantA.setWinnings(participantA, winningsLoses) #todo: requires two actions? positional argument 'winnings_loses')
         participantA.recordKeysPressed('a')
 
 
