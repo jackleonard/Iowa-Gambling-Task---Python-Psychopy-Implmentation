@@ -85,6 +85,7 @@ class DeckFileManager(FileManager):
       # When the win and lose amount of that particular row has been read, the row number for that deck should increment by 1.
       # If there are no more row numbers to read for that particular deck, the function should return -1.
 
+
     if self.decknumber == 1: #DeckA
         winLose = self.readRow(self.rowNumber)[:2]
         self.rowNumber = self.rowNumber + 1
