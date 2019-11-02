@@ -54,90 +54,87 @@ class trialParticipant(Participant):
     def __init__(self):
 
         # Dragging in initializer from Participant Class
-        super(Participant).__init__
+        super(trialParticipant, self).__init__()
 
         self.charsPressed = {"a": 0, "b": 0, "c": 0, "d": 0,}
 
         #todo: none of these are working outside this file for some reason
-        def getWinnings(self):
-            return self.__winnings
-
-
-        def setWinnings(self, winnings_loses):  # TODO this isn't changing/setting the winnings section
-            # Takes a tutle as input (amount_won,amount_lost)
-            # From this the function should calculate how much money the participant has left over once the winning amount and losing amount has been applied to the participant’s overall winnings.
-            winnings = self.__winnings
-            newWinnings = (winnings - winnings_loses[1]) + winnings_loses[0]
-            self.__winnings = newWinnings
-
-            # H - This function returns the character presses made by the participant as a list of tuples (i.e. not a dictionary).
-
-        def getKeyPressInfo(self):
-            dictlist = []
-            charsPressed = self.__charsPressed
-            for key, value in charsPressed.items():
-                temp = [key, value]
-                dictlist.append(temp)
-            return dictlist
-
-        # I - Count how many tims a participant has clicked chars ('a', 'b', 'c', 'd',)
-        def recordKeysPressed(self, char_pressed):  # TODO not invoked in char press yet
-            charDict = self.__charsPressed
-            if char_pressed == "a" or char_pressed == "b" or char_pressed == "c" or char_pressed == "d":
-                charDict[
-                    char_pressed] += 1
-
-                # print(charDict)
-            else:  # this is actually superflous, I could just use the first statement but I'm leaving it here in case I need a special operation for disalowed keys
-                print("Invalid Character")
-
-                # This function is intended to count how many times a participant has clicked the characters a, b, c or d.
-
-        # J - This function returns a list of tuples that hold the character(s) with the highest amount of key presses.
-        def getMaxKeyPress(self):
-            highestvalue = 0
-            highestValueList = []
-            dictlist = self.__charsPressed
-            # find highest values
-            for item in dictlist.items():
-                key = item[0]
-                value = item[1]
-                # print("max test")
-                # print(key, value)
-                if value > highestvalue:
-                    highestvalue = value
-                    # print(f"Highest Value: {highestvalue}")
-                    # find the chars with highest value
-                    for k, v in dictlist.items():
-                        if v == highestvalue:
-                            highestValueList.append((k, v))
-                            # print(highestValueList)
-            return highestValueList
-
-            # K - This function returns a list of tuples that hold the character(s) with the highest amount of key presses.
-
-        def getMinKeyPress(self):  # todo: not working, check the logic !!
-            minvalue = 0
-            minvalueList = []
-            dictlist = self.__charsPressed
-            # find min values
-
-            for item in dictlist.items():
-                key = item[0]
-                value = item[1]
-                # print("min test")
-                # print(key, value)
-                if value < minvalue:
-                    minvalue = value
-                    # print(f"Min Value: {minvalue}")
-            # find the chars with highest value
-            for k, v in dictlist.items():
-                if v == minvalue:
-                    minvalueList.append((k, v))
-
-            return minvalueList
+    def getWinnings(self):
+        return self.__winnings
 
 
 
-participantB = trialParticipant
-print(participantB)
+
+    def setWinnings(self, winnings_loses):  # TODO this isn't changing/setting the winnings section
+         # Takes a tutle as input (amount_won,amount_lost)
+        # From this the function should calculate how much money the participant has left over once the winning amount and losing amount has been applied to the participant’s overall winnings.
+        winnings = self.__winnings
+        newWinnings = (winnings - winnings_loses[1]) + winnings_loses[0]
+        self.__winnings = newWinnings
+
+        # H - This function returns the character presses made by the participant as a list of tuples (i.e. not a dictionary).
+
+    def getKeyPressInfo(self):
+        dictlist = []
+        charsPressed = self.__charsPressed
+        for key, value in charsPressed.items():
+            temp = [key, value]
+            dictlist.append(temp)
+        return dictlist
+
+    # I - Count how many tims a participant has clicked chars ('a', 'b', 'c', 'd',)
+    def recordKeysPressed(self, char_pressed):  # TODO not invoked in char press yet
+        charDict = self.__charsPressed
+        if char_pressed == "a" or char_pressed == "b" or char_pressed == "c" or char_pressed == "d":
+            charDict[char_pressed] += 1
+
+        # print(charDict)
+    else:  # this is actually superflous, I could just use the first statement but I'm leaving it here in case I need a special operation for disalowed keys
+        print("Invalid Character")
+
+        # This function is intended to count how many times a participant has clicked the characters a, b, c or d.
+
+    # J - This function returns a list of tuples that hold the character(s) with the highest amount of key presses.
+    def getMaxKeyPress(self):
+        highestvalue = 0
+        highestValueList = []
+        dictlist = self.__charsPressed
+        # find highest values
+        for item in dictlist.items():
+            key = item[0]
+            value = item[1]
+            # print("max test")
+            # print(key, value)
+            if value > highestvalue:
+                highestvalue = value
+                # print(f"Highest Value: {highestvalue}")
+                # find the chars with highest value
+                for k, v in dictlist.items():
+                    if v == highestvalue:
+                        highestValueList.append((k, v))
+                        # print(highestValueList)
+        return highestValueList
+
+        # K - This function returns a list of tuples that hold the character(s) with the highest amount of key presses.
+
+    def getMinKeyPress(self):  # todo: not working, check the logic !!
+        minvalue = 0
+        minvalueList = []
+        dictlist = self.__charsPressed
+        # find min values
+
+        for item in dictlist.items():
+            key = item[0]
+            value = item[1]
+            # print("min test")
+            # print(key, value)
+            if value < minvalue:
+                minvalue = value
+                # print(f"Min Value: {minvalue}")
+        # find the chars with highest value
+        for k, v in dictlist.items():
+            if v == minvalue:
+                minvalueList.append((k, v))
+
+        return minvalueList
+
