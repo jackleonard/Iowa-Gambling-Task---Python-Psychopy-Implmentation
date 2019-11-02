@@ -57,8 +57,11 @@ class trialParticipant(Participant):
         super(trialParticipant, self).__init__()
 
         self.charsPressed = {"a": 0, "b": 0, "c": 0, "d": 0,}
+        self.__winnings = 0 #todo: I added this in, because it was in old file. Not set in this.
 
-        #todo: none of these are working outside this file for some reason
+
+
+
     def getWinnings(self):
         return self.__winnings
 
@@ -115,7 +118,7 @@ class trialParticipant(Participant):
 
         # K - This function returns a list of tuples that hold the character(s) with the highest amount of key presses.
 
-    def getMinKeyPress(self):  # todo: not working, check the logic !!
+    def getMinKeyPress(self):
         minvalue = 0
         minvalueList = []
         dictlist = self.__charsPressed
