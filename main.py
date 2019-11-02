@@ -70,6 +70,7 @@ deckOverflow = False
 
 
 
+
 while char_pressed != 'q' and deckOverflow != True: #or  deckA.rowNumber <= deckA.getTotalRows() or  deckB.rowNumber <= deckB.getTotalRows() or  deckC.rowNumber <= deckC.getTotalRows() or  deckD.rowNumber <= deckD.getTotalRows():
     #todo: not sure if not notation here works - check this
 
