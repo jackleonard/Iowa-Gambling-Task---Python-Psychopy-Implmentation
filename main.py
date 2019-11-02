@@ -49,6 +49,17 @@ winningsTitleText = TextStim(
     height=25,
 )
 
+#create "Winnings" Variable Text object
+winningsVariableText = TextStim(
+    win=display,
+    pos=(0,330), #note this value can be a list or a tuple
+    text="Winnings:",
+    font='Futura',
+    alignHoriz='center',
+    color="#4A5EB9",
+    height=25,
+)
+
 #create "Amount Won" subtitle text
 amountWonSubtitleText = TextStim(
     win=display,
@@ -61,6 +72,17 @@ amountWonSubtitleText = TextStim(
     height=15,
 )
 
+#create "Amount Won" variable text
+amountWonVariableText = TextStim(
+    win=display,
+    pos=(-400,250), #note this value can be a list or a tuple
+    text="",
+    font='Futura',
+    alignHoriz='center',
+    color="#4A5EB9",
+    height=15,
+)
+
 #create "Amount Lost" subtitle text
 amountLostSubtitleText = TextStim(
     win=display,
@@ -68,6 +90,17 @@ amountLostSubtitleText = TextStim(
     text="Amount Lost:",
     font='Futura',
     bold=True,
+    alignHoriz='center',
+    color="#4A5EB9",
+    height=15,
+)
+
+#create "Amount Lost" variable text
+amountLostVariableText = TextStim(
+    win=display,
+    pos=(400,250), #note this value can be a list or a tuple
+    text="",
+    font='Futura',
     alignHoriz='center',
     color="#4A5EB9",
     height=15,
@@ -131,6 +164,7 @@ div = psychopy.visual.Rect(
 )
 
 
+amountLostCopy = ""
 
 #Draw Elements to the Canvas
 div.draw()
@@ -141,6 +175,9 @@ deckATitleText.draw()
 deckBTitleText.draw()
 deckCTitleText.draw()
 deckDTitleText.draw()
+winningsVariableText.draw()
+amountLostVariableText.draw()
+amountWonVariableText.draw()
 display.flip() #clear the canvas and place new 'drawable' elements on the canvas
 core.wait(25) #wait 7 seconds
 display.close() #close the display
@@ -150,11 +187,12 @@ display.close() #close the display
 #       ♔ Main Code
 
 
+
 def runningTrial(key_pressed):
     pass
 
 
-char_pressed = None
+char_pressed = psychopy.event.waitKeys()
 
 while char_pressed != 'q' and True:
 #This is a sentinel controlled while loop, it'll break when the user quits or we run out of rows
@@ -177,18 +215,26 @@ while char_pressed != 'q' and True:
     char_pressed = input("Please enter a character: 'a', 'b', 'c' or 'd' to reveal your winnings. Type 'q' to quit: ")
     if char_pressed == 'a': # character 'a' refers to Deck A
 
+
+
         #obtaining winning & losing amount from Deck
         winningsLoses = deckA.getWinsLoses()
         print(f"This is winnings Loses {winningsLoses} of type: {type(winningsLoses)}")
         print(f"This is winnings  {int(winningsLoses[0])} of type: {type(int(winningsLoses[0]))}")
         #Obtaining the amount won as display text
-        print(deckA.getWins())
+        #amountWonVariableText.text = str(deckA.getWins())
+        #amountWonVariableText.draw() #todo: investigate is this going to cut it or do I need to display flip or refresh as well?
         #Obtaining the amount lost as display text
-        print(deckA.getLosses())
+        #amountLostVariableText.text = str(deckA.getLosses())
         #Recalculating the participants winnings
         participantA.setWinnings(winningsLoses) #todo: requires two actions? positional argument 'winnings_loses')
         participantA.recordKeysPressed('a')
         print(f"The total row number is {deckA.getTotalRows()} of type {type(deckA.getTotalRows())}")
+        #change colour of deck key
+        deckATitleText.color ="#03E5C9"
+        deckATitleText.draw()
+        win.flip()
+
 
 
 
@@ -198,9 +244,9 @@ while char_pressed != 'q' and True:
         print(deckB.getWinsLoses())
         winningsLoses = deckB.getWinsLoses()
         # Obtaining the amount won as display text
-        print(deckB.getWins())
+        amountWonVariableText.text = str(deckB.getWins())
         # Obtaining the amount lost as display text
-        print(deckB.getLosses())
+        amountLostVariableText.text = str(deckB.getLosses())
         # Recalculating the participants winnings
         participantB.setWinnings(winningsLoses)
         participantB.recordKeysPressed('b')
@@ -213,9 +259,9 @@ while char_pressed != 'q' and True:
         print(deckC.getWinsLoses())
         winningsLoses = deckC.getWinsLoses()
         # Obtaining the amount won as display text
-        print(deckC.getWins())
+        amountWonVariableText.text = str(deckC.getWins())
         # Obtaining the amount lost as display text
-        print(deckC.getLosses())
+        amountLostVariableText.text = str(deckC.getLosses())
         # Recalculating the participants winnings
         participantC.setWinnings(winningsLoses)
         participantC.recordKeysPressed('c')
@@ -228,9 +274,9 @@ while char_pressed != 'q' and True:
         print(deckD.getWinsLoses())
         winningsLoses = deckD.getWinsLoses()
         # Obtaining the amount won as display text
-        print(deckD.getWins())
+        amountWonVariableText.text = str(deckD.getWins())
         # Obtaining the amount lost as display text
-        print(deckD.getLosses())
+        amountLostVariableText.text = str(deckD.getLosses())
         # Recalculating the participants winnings
         participantD.setWinnings(winningsLoses)
         participantD.recordKeysPressed('d')
