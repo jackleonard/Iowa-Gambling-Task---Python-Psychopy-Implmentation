@@ -63,7 +63,8 @@ def runningTrial(key_pressed):
 
 char_pressed = None
 
-#todo: Fix this code figure out how to make sure less than rows 
+#todo: Fix this code figure out how to make sure less than rows
+# Sentinel Loop ?? 
 while char_pressed != 'q': #or  deckA.rowNumber <= deckA.getTotalRows() or  deckB.rowNumber <= deckB.getTotalRows() or  deckC.rowNumber <= deckC.getTotalRows() or  deckD.rowNumber <= deckD.getTotalRows():
     #todo: not sure if not notation here works - check this
 
