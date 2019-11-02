@@ -59,20 +59,24 @@ display.close() #close the display
 def runningTrial(key_pressed):
     pass
 
-# Sentinel While Loop with two flags q for user quit and check if rows left  overflow)
-deckOverflow = False
+
 char_pressed = None
 
-while char_pressed != 'q' and deckOverflow != True:
+while char_pressed != 'q' and True:
+#This is a sentinel controlled while loop, it'll break when the user quits or we run out of rows
 
-    if deckA.rowNumber > deckA.getTotalRows():
-        deckOverflow = True
-    elif deckB.rowNumber > deckB.getTotalRows():
-        deckOverflow = True
-    elif deckC.rowNumber > deckC.getTotalRows():
-        deckOverflow = True
-    elif deckD.rowNumber > deckC.getTotalRows():
-        deckOverflow = True
+    if deckA.rowNumber > (deckA.getTotalRows() - 1): #subtracting one to account for row headers in first column
+        print("You have completed the game!")
+        break
+    elif deckB.rowNumber > (deckB.getTotalRows() -1):
+        print("You have completed the game!")
+        break
+    elif deckC.rowNumber > (deckC.getTotalRows() -1):
+        print("You have completed the game!")
+        break
+    elif deckD.rowNumber > (deckC.getTotalRows() -1):
+        print("You have completed the game!")
+        break
 
 
   # this will continue to loop until the participant clicks 'q' key
@@ -90,6 +94,7 @@ while char_pressed != 'q' and deckOverflow != True:
         #Recalculating the participants winnings
         participantA.setWinnings(winningsLoses) #todo: requires two actions? positional argument 'winnings_loses')
         participantA.recordKeysPressed('a')
+        print(f"The total row number is {deckA.getTotalRows()} of type {type(deckA.getTotalRows())}")
 
 
 
