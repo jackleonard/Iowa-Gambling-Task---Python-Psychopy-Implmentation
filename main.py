@@ -1,7 +1,7 @@
 '''
 
 ################## MAIN.PY ########################
-      © Jack Leonard 2019
+                © Jack Leonard 2019
       117372043 - Iowa Gambling Task Project
 
             Main Code & Psychopy based GUI
@@ -167,20 +167,35 @@ div = psychopy.visual.Rect(
 amountLostCopy = ""
 
 #Draw Elements to the Canvas
-div.draw()
-winningsTitleText.draw() #draw the text
-amountWonSubtitleText.draw()
-amountLostSubtitleText.draw()
-deckATitleText.draw()
-deckBTitleText.draw()
-deckCTitleText.draw()
-deckDTitleText.draw()
-winningsVariableText.draw()
-amountLostVariableText.draw()
-amountWonVariableText.draw()
-display.flip() #clear the canvas and place new 'drawable' elements on the canvas
-core.wait(25) #wait 7 seconds
-display.close() #close the display
+
+def drawMainUI():
+    #draw the main elements
+    div.draw()
+    winningsTitleText.draw() #draw the text
+    amountWonSubtitleText.draw()
+    amountLostSubtitleText.draw()
+
+    #reset the colour to white
+    deckATitleText.color = "white"
+    deckBTitleText.color = "white"
+    deckCTitleText.color = "white"
+    deckDTitleText.color = "white"
+
+    #draw the deckTitle elements
+    deckATitleText.draw()
+    deckBTitleText.draw()
+    deckCTitleText.draw()
+    deckDTitleText.draw()
+
+    #draw the variable elements
+    winningsVariableText.draw()
+    amountLostVariableText.draw()
+    amountWonVariableText.draw()
+
+
+drawMainUI()
+display.flip()
+
 
 
 
@@ -188,19 +203,20 @@ display.close() #close the display
 
 
 
-def runningTrial(key_pressed):
+def runningTrial(char_pressed):
     pass
+
 
 
 char_pressed = psychopy.event.waitKeys()
 
-while char_pressed != 'q' and True:
+while char_pressed != ['q'] and True:
 #This is a sentinel controlled while loop, it'll break when the user quits or we run out of rows
 
     if deckA.rowNumber > (deckA.getTotalRows() - 1): #subtracting one to account for row headers in first column
         print("You have completed the game!")
         break
-    elif deckB.rowNumber > (deckB.getTotalRows() -1):
+    elif deckB.rowNumber > (deckB.getTotalRows() -1): #todo: do I need to do anything here to get this to work with Psychopy?
         print("You have completed the game!")
         break
     elif deckC.rowNumber > (deckC.getTotalRows() -1):
@@ -211,9 +227,10 @@ while char_pressed != 'q' and True:
         break
 
 
+
   # this will continue to loop until the participant clicks 'q' key
-    char_pressed = input("Please enter a character: 'a', 'b', 'c' or 'd' to reveal your winnings. Type 'q' to quit: ")
-    if char_pressed == 'a': # character 'a' refers to Deck A
+    char_pressed = psychopy.event.waitKeys() #input("Please enter a character: 'a', 'b', 'c' or 'd' to reveal your winnings. Type 'q' to quit: ")
+    if char_pressed == ['a']: # character 'a' refers to Deck A
 
 
 
@@ -221,68 +238,112 @@ while char_pressed != 'q' and True:
         winningsLoses = deckA.getWinsLoses()
         print(f"This is winnings Loses {winningsLoses} of type: {type(winningsLoses)}")
         print(f"This is winnings  {int(winningsLoses[0])} of type: {type(int(winningsLoses[0]))}")
+        #winning losing amount display text
+        winningsVariableText.text = participantA.getWinnings() #todo check how winnings are being calculated and make sure they are correct
         #Obtaining the amount won as display text
-        #amountWonVariableText.text = str(deckA.getWins())
+        amountWonVariableText.text = str(deckA.getWins())
         #amountWonVariableText.draw() #todo: investigate is this going to cut it or do I need to display flip or refresh as well?
         #Obtaining the amount lost as display text
-        #amountLostVariableText.text = str(deckA.getLosses())
+        amountLostVariableText.text = str(deckA.getLosses()) #todo: check if winningLoses are correct
         #Recalculating the participants winnings
         participantA.setWinnings(winningsLoses) #todo: requires two actions? positional argument 'winnings_loses')
         participantA.recordKeysPressed('a')
         print(f"The total row number is {deckA.getTotalRows()} of type {type(deckA.getTotalRows())}")
+
         #change colour of deck key
-        deckATitleText.color ="#03E5C9"
+
+        drawMainUI()
+        deckATitleText.color = "green"
         deckATitleText.draw()
-        win.flip()
+        display.flip()
 
 
 
 
-    elif char_pressed == 'b': # character 'b' refers to Deck B
+    elif char_pressed == ['b']: # character 'b' refers to Deck B
 
         # obtaining winning & losing amount from Deck
         print(deckB.getWinsLoses())
         winningsLoses = deckB.getWinsLoses()
+        #winningLosing amount display text
+        winningsVariableText.text = participantA.getWinnings()
         # Obtaining the amount won as display text
         amountWonVariableText.text = str(deckB.getWins())
         # Obtaining the amount lost as display text
         amountLostVariableText.text = str(deckB.getLosses())
         # Recalculating the participants winnings
-        participantB.setWinnings(winningsLoses)
-        participantB.recordKeysPressed('b')
+        participantA.setWinnings(winningsLoses)
+        participantA.recordKeysPressed('b')
+
+        # change colour of deck key
+
+        drawMainUI()
+        deckBTitleText.color = "green"
+        deckBTitleText.draw()
+        display.flip()
 
 
 
-    elif char_pressed == 'c': # character 'c' refers to Deck C
+
+    elif char_pressed == ['c']: # character 'c' refers to Deck C
 
         # obtaining winning & losing amount from Deck
         print(deckC.getWinsLoses())
         winningsLoses = deckC.getWinsLoses()
+        #winningLosing amount display text
+        winningsVariableText.text = participantA.getWinnings()
         # Obtaining the amount won as display text
         amountWonVariableText.text = str(deckC.getWins())
         # Obtaining the amount lost as display text
         amountLostVariableText.text = str(deckC.getLosses())
         # Recalculating the participants winnings
-        participantC.setWinnings(winningsLoses)
-        participantC.recordKeysPressed('c')
+        participantA.setWinnings(winningsLoses)
+        participantA.recordKeysPressed('c')
+
+        # change colour of deck key
+
+        drawMainUI()
+        deckCTitleText.color = "green"
+        deckCTitleText.draw()
+        display.flip()
 
 
 
-    elif char_pressed == 'd': # character 'd' refers to Deck UnicodeDecodeError
+    elif char_pressed == ['d']: # character 'd' refers to Deck UnicodeDecodeError
 
         # obtaining winning & losing amount from Deck
         print(deckD.getWinsLoses())
         winningsLoses = deckD.getWinsLoses()
+        #winningLosing draw text
+        winningsVariableText.text = participantA.getWinnings()
         # Obtaining the amount won as display text
         amountWonVariableText.text = str(deckD.getWins())
         # Obtaining the amount lost as display text
         amountLostVariableText.text = str(deckD.getLosses())
         # Recalculating the participants winnings
-        participantD.setWinnings(winningsLoses)
-        participantD.recordKeysPressed('d')
+        participantA.setWinnings(winningsLoses)
+        participantA.recordKeysPressed('d')
+
+        # change colour of deck key
+
+        drawMainUI()
+        deckDTitleText.color = "green"
+        deckDTitleText.draw()
+        display.flip()
 
 
-
+core.wait(5) #wait 7 seconds
+winningsVariableText.text = "Thanks for Participating"
+deckDTitleText.text = participantA.getWinnings()
+deckDTitleText.color = "#4A5EB9"
+deckATitleText.text = "Trial Over"
+#todo: Need to add some more lines of text to this ( see video ) Trial is over, thanks for participanting etc
+deckDTitleText.draw()
+deckATitleText.draw()
+winningsVariableText.draw()
+display.flip()
+core.wait(10) #hold screen for 10 seconds
+display.close() #close the display
 
 
 
